@@ -5,3 +5,4 @@ def table(num):
 print("Enter a number: ")
 num = int(input())
 table(num)
+    

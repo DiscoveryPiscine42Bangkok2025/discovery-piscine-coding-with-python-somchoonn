@@ -1,5 +1,5 @@
 def main(num):
-    if num >= 25:
+    if num > 25:
         print("Error")
     else:
         for i in range(num,26):
