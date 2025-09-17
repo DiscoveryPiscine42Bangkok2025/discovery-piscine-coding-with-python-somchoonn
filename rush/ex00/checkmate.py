@@ -1,19 +1,41 @@
 def checkmate(board):
 # แบ่งเป็นแถว
     rows = board.strip().split("\n")
+    new_rows = []
     line = len(rows)
 
+# Check Board
+    for i in rows:
+        if len(i) != line:
+            print("Board is not square")
+            return 
+
+# Change not allow to .
+    for i in range(line):
+        new_row = ""
+        for j in range(line):
+            if rows[i][j] not in "KPBQR.":
+                new_row += "."
+            else:
+                new_row += rows[i][j]
+        new_rows.append(new_row)
+    rows = new_rows
+                
+        
+    
 # หาตำแหน่งของ K
+    king_count = 0
     king_pos = None
     for i in range(line):
         for j in range(line):
             if rows[i][j] == "K":
                 king_pos = (i, j)
-                break
-    if not king_pos:
-        print("Error")
+                king_count += 1
+# Check King
+    if king_count != 1:
+        print("There should be exactly one King")
         return
-    
+        
 # เช็คการเดินของตัวต่างๆ
     def in_bounds(x, y):
         return 0 <= x < line and 0 <= y < line
